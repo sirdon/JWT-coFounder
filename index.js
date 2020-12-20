@@ -14,6 +14,11 @@ app.listen(PORT, ()=> {
     console.log(`server running at ${PORT}`)
 });
 
+//heroku 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('auth-frontend/build'));
+}
+
 //set up routes
 
 app.use("/api/users",require("./routes/userRouter"));
