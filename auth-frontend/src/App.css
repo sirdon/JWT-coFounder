@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Roboto&display=swap');
+
+/* reset */
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: #2199df;
+  text-decoration: unset;
+}
+
+ul {
+  margin-left: 1.5rem;
+  list-style: none;
+}
+button, input[typer="submit"]{
+  border:none;
+  background: none;
+  color:unset;
+  cursor: pointer;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+  margin:1em 0;
+  text-align: center;
+  padding: 1rem;
+  
+}
+
+body{
+  font-family:"Roboto", sans-serif;
+}
+
+/* header */
+#header{
+  height: 50px;
+  
+  background-color: #e02525;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header .title{
+  margin:0;
+  color:#ffffff;
+  padding:0 1rem;
+}
+#header .auth-option{
+  display: flex;
+  height: 100%;
+}
+
+#header .auth-option button{
+  padding: 0 1rem;
+  color:#ffffff;
+  background-color: #b91b1b;
+  font-size: #f13737;
+}
+#header .auth-option button:hover{
+  background-color: #da9898;
+}
+
+@media screen and (max-width:550px){
+  #header .title{
+    font-size: 1.2rem;
+  }
+  #header .auth-option button{
+    padding: 0 0.5rem;
+    font-size:  0.9rem;
+  }
+}
+
+.page{
+  padding: 1rem;
+}
+/* error */
+.error{
+  margin :1rem 0;
+  border: 1px solid red;
+  padding:  0.5rem ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  background-color: rgb(228, 187, 187);
+
+}
+.error button{
+  
+  width:20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  color: #ffffff;
+}
+.home-page{
+  background-position: center;
+  background-size: cover;
+  height:91.6vh;
+  background-image: url("./images/wall.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* home text  */
+.home{
+  font-size: 100px;
+}
+/* home icon */
+svg.MuiSvgIcon-root {
+  width: 2em;
+  height: 2em;
+  opacity: 0.5;
+}
+
+/* seveices */
+.services {
+  background-image: url('./images/services.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  color: #fff;
+  font-size: 100px;
+  height: 100vh;
+}
+
+.products {
+  background-image: url('./images/products.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  color: #fff;
+  font-size: 100px;
+  height: 100vh;
+}
+@media screen and (max-width:550px){
+  .services, .products, .home{
+    font-size: 70px;
+  }
+  
+}
+
+@media screen and (max-width:360px){
+  .services, .products, .home{
+    font-size: 50px;
+  }
+  
+}
