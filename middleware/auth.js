@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const {JWT_SECRET} = require("../config/secret.json")
 const auth = (req,res, next)=>{
     const token = req.header("x-auth-token");
     try {
@@ -8,7 +7,7 @@ const auth = (req,res, next)=>{
             return res.status(401).json({ msg: "no authentication token"});
         };
         // verify the validity of token
-        const verified = jwt.verify(token, JWT_SECRET);
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
         if(!verified){
             return res.status(401).json({ msg: "token verification failed"});
         }
@@ -17,7 +16,6 @@ const auth = (req,res, next)=>{
     } catch (error) {
         res.status(500).json({error:error.message})
     }
-
 }
 
 module.exports.auth = auth;

@@ -1,11 +1,11 @@
 const userRouter = require("express").Router();
 
-const { register, login, deleteUser, validateToken, getLoggedInUserInfo } = require("../controller/userController");
+const { signUp, login, deleteUser, validateToken, getLoggedInUserInfo } = require("../controller/userController");
 const { auth } = require("../middleware/auth")
 
 userRouter.route("/login").post(login);
-userRouter.route("/register").post(register);
-userRouter.route("/delete").delete(auth, deleteUser); // frontend not implemented
+userRouter.route("/signUp").post(signUp);
+userRouter.route("/delete").delete(auth, deleteUser); 
 userRouter.route("/tokenIsValid").post(validateToken);
 userRouter.route("/").get(auth, getLoggedInUserInfo);
 

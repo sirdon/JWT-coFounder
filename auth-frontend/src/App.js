@@ -2,13 +2,15 @@ import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Login from './components/auth/Login';
-import Register from './components/auth/Register';
+import SignUp from './components/auth/SignUp';
 import Header from './components/Layout/Header';
 import React, { useState, useEffect } from 'react'
 import UserContext from './context/UserContext';
 import Axios from 'axios';
-import Services from './components/pages/Services';
-import Products from './components/pages/Products';
+import User from './components/pages/User';
+import Publish from './components/pages/Publish';
+import Tag from './components/pages/Tag';
+
 
 function App() {
   const [userData, setUserData] = useState({
@@ -51,9 +53,10 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact></Route>
             <Route path="/login" component={Login} ></Route>
-            <Route path="/register" component={Register} ></Route>
-            <Route path="/services" component={Services} ></Route>
-            <Route path="/products" component={Products} ></Route>
+            <Route path="/signUp" component={SignUp} ></Route>
+            <Route path="/user" component={User} ></Route>
+            <Route path="/publish" component={Publish} ></Route>
+            <Route paht="/tag" component={Tag}></Route>
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>

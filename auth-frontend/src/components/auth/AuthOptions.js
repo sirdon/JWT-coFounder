@@ -7,7 +7,7 @@ export default function AuthOptions() {
     // create history object 
     const history = useHistory();
 
-    const register = () => history.push("/register");
+    const signUp= () => history.push("/signUp");
     const login = () => history.push("/login");
     const logout = () => {
         // clean the token and user data
@@ -20,22 +20,23 @@ export default function AuthOptions() {
         // redirect the user to home page
         history.push("/login");
     };
-    const services = () => history.push("/services");
-    const products = () => history.push("/products");
+    const publish = () => history.push("/publish");
+    const profile = () => history.push(`/user/${userData.user.username}`);
     return (
-        // if user logged in display logout button else display register and login button
+        // if user logged in display logout button else display sign up and login button
         <nav className="auth-option">
             {
                 userData.user ? (
                     <>
-                    <button onClick={services}>Services</button>
-                    <button onClick={products}>Products</button>
+                    <p>Hi {userData.user.username}</p>
+                    <button onClick={profile}>Profile</button>
+                    <button onClick={publish}>Publish</button>
                     <button onClick={logout}>Log out</button>
                     </>
 
                 ) : (
                         <>
-                            <button onClick={register}>Register</button>
+                            <button onClick={signUp}>Sign Up</button>
                             <button onClick={login}>Log in</button>
                         </>
                     )

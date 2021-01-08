@@ -3,9 +3,9 @@ import Axios from 'axios';
 import UserContext from '../../context/UserContext';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
-import Error from '../errors/Error';
+import Error from '../components/errors/Error';
 
-export default function Login() {
+export default function User() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const { userData, setUserData } = useContext(UserContext);
@@ -21,25 +21,22 @@ export default function Login() {
       const loginRes = await Axios.post("http://localhost:5000/api/users/login",
         loginUser);
       // create session for the logged in user
-      
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user
       });
-     
+      // store session token in browser storage
       localStorage.setItem("auth-token", loginRes.data.token);
       // redirect user to home page
-      
-    
+      history.push("/");
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
-      console.log(err)
     }
   }
 
   useEffect(() => {
     // redirect logged in user to home page
-    if (userData.user) history.push(`/user/${userData.user.username}`);
+    if (userData.user) history.push(`/user/${username}`);
   }, [userData])
   return (
     <div className="page">

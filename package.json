@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd auth-frontend && npm run build",
-    "install-frontend":"cd auth-frontend && npm install",
-    "heroku-postbuild":"npm run install-frontend && npm run build",
+    "install-frontend": "cd auth-frontend && npm install",
+    "heroku-postbuild": "npm run install-frontend && npm run build",
     "start": "node index.js && cd auth-frontend && npm start"
   },
   "keywords": [],
@@ -21,10 +21,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
     "uuid": "^8.3.2"
   },
   "engines": {
     "node": "v12.18.4"
   }
-
 }

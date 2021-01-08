@@ -73,7 +73,7 @@ body{
   }
 }
 
-.page{
+.page, .publish{
   padding: 1rem;
 }
 /* error */
@@ -116,42 +116,52 @@ svg.MuiSvgIcon-root {
   opacity: 0.5;
 }
 
-/* seveices */
-.services {
-  background-image: url('./images/services.png');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  color: #fff;
-  font-size: 100px;
-  height: 100vh;
-}
 
-.products {
-  background-image: url('./images/products.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  color: #fff;
-  font-size: 100px;
-  height: 100vh;
-}
+
 @media screen and (max-width:550px){
-  .services, .products, .home{
+   .home{
     font-size: 70px;
   }
   
 }
 
 @media screen and (max-width:360px){
-  .services, .products, .home{
+  .home{
     font-size: 50px;
   }
   
+}
+
+.userArticles {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+}
+
+.card{
+  margin: 1%;
+  border: none;
+}
+
+.card-text{
+  padding: 1px;
+  text-align: justify;
+}
+
+.mb-3{
+  margin-top: 1%;
+  justify-content: left;
+  max-width: 70%;
+}
+
+.auth-option > button{
+  min-width: fit-content;
+}
+
+.MuiSvgIcon-root{
+  max-width: 30px;
+  max-height: 30px;
 }

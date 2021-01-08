@@ -4,7 +4,11 @@ import UserContext from '../../context/UserContext';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import Error from '../errors/Error';
-export default function Register() {
+
+export default function SignUp() {
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
+  const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
@@ -14,15 +18,15 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // register user
-      const newUser = { email, password, passwordCheck };
-      await Axios.post("http://localhost:5000/api/users/register",
+      // signUp user
+      const newUser = { name, age, username, email, password, passwordCheck };
+      await Axios.post("http://localhost:5000/api/users/signUp",
         newUser);
       // make self call for login
-      const loginUser = { email, password };
+      const loginUser = { username, password };
       const loginRes = await Axios.post("http://localhost:5000/api/users/login",
         loginUser);
-      // create session for the register user
+      // create session for the signUp user
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user
@@ -37,23 +41,41 @@ export default function Register() {
 
   useEffect(() => {
     // redirect logged in user to home page
-    if(userData.user) history.push("/");
+    if(userData.user) history.push(`/user/${userData.user.username}`);
   },[userData])
 
   return (
     <div className="page">
-      <h2>Register</h2>
+      <h2>Sign Up</h2>
       {/*  display error message */}
       {error && (<Error message={error} clearError={() => setError(undefined)}></Error>)}
-      {/* registeration form */}
+      {/* signUpation form */}
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="register-email">
+      <Form.Group controlId="signUp-name">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter your name"
+            onChange={(e) => setName(e.target.value)} />
+        </Form.Group>
+
+        <Form.Group controlId="signUp-age">
+          <Form.Label>Age</Form.Label>
+          <Form.Control type="number" placeholder="Enter your age"
+            onChange={(e) => setAge(e.target.value)} />
+        </Form.Group>
+
+        <Form.Group controlId="signUp-username">
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text" placeholder="Username must be unique"
+            onChange={(e) => setUsername(e.target.value)} />
+        </Form.Group>
+
+        <Form.Group controlId="signUp-email">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email"
             onChange={(e) => setEmail(e.target.value)} />
         </Form.Group>
 
-        <Form.Group controlId="register-password">
+        <Form.Group controlId="signUp-password">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password"
             onChange={(e) => setPassword(e.target.value)} />
@@ -65,7 +87,7 @@ export default function Register() {
         </Form.Group>
 
         <Button variant="primary" type="submit">
-          Register
+          Sign Up
         </Button>
       </Form>
     </div>
